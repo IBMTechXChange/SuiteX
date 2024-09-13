@@ -25,9 +25,10 @@ export default function AlertWidget() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant='outline' size='icon' className='relative'>
+        <Button variant='outline' className='relative w-full gap-2 p-2'>
           <Bell className='h-5 w-5' />
           <span className='absolute right-0 top-0 h-2 w-2 rounded-full bg-red-500' />
+          <span className='block md:hidden'> Notifications </span>
         </Button>
       </PopoverTrigger>
       <PopoverContent className='w-80'>

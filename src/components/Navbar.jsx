@@ -24,7 +24,7 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className='fixed left-4 right-4 top-4 z-50 mx-auto max-w-7xl rounded-3xl bg-white/80 shadow-lg backdrop-blur-md'>
+    <nav className='sticky left-4 right-4 top-4 z-50 mx-auto max-w-7xl rounded-3xl bg-white/80 shadow-lg backdrop-blur-md'>
       <div className='px-4 sm:px-6 lg:px-8'>
         <div className='flex h-16 items-center justify-between'>
           {/* Logo */}
@@ -85,18 +85,6 @@ export default function Navbar() {
         <div className='md:hidden'>
           <div className='space-y-1 px-4 pb-3 pt-2 sm:px-3'>
             {/* Mobile navigation links */}
-            <Link
-              href='/link1'
-              className='block text-sm font-medium hover:text-gray-700'
-            >
-              Link 1
-            </Link>
-            <Link
-              href='/link2'
-              className='block text-sm font-medium hover:text-gray-700'
-            >
-              Link 2
-            </Link>
             <AppsWidget />
             <AlertWidget />
           </div>

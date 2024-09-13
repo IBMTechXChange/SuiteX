@@ -22,8 +22,9 @@ export default function AppsWidget() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant='ghost' size='icon' className='flex gap-1'>
-          <Grip className='h-7 w-7' />
+        <Button variant='ghost' className='flex w-full gap-1 border'>
+          <Grip className='h-5 w-5' />
+          All Apps
         </Button>
       </PopoverTrigger>
       <PopoverContent className='w-80'>
