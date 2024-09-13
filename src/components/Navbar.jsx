@@ -16,6 +16,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import AlertWidget from './AlertWidget';
+import AppsWidget from './AppsWidget';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,12 +38,8 @@ export default function Navbar() {
           {/* Desktop Links and Dropdown */}
           <div className='hidden items-center space-x-4 md:flex'>
             {/* Desktop Links */}
-            <Link
-              href='/link1'
-              className='text-sm font-medium hover:text-gray-700'
-            >
-              Link 1
-            </Link>
+
+            <AppsWidget />
             <AlertWidget />
 
             {/* Profile Button with Dropdown */}

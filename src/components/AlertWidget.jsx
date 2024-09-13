@@ -1,4 +1,4 @@
-import { Bell } from 'lucide-react';
+import { Bell, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
@@ -35,13 +35,14 @@ export default function AlertWidget() {
           <h2 className='text-lg font-semibold'>Notifications</h2>
           <Button variant='secondary' size='sm'>
             Mark all as read
+            <Check className='w-4 h-4 ml-1' />
           </Button>
         </div>
         <ScrollArea className='h-[300px] overflow-y-auto'>
           {notifications.map((notification) => (
             <div
               key={notification.id}
-              className='mb-4 rounded-lg border p-3 transition-colors last:mb-0 hover:bg-accent'
+              className='mb-4 rounded-lg border p-3 shadow-md transition-colors last:mb-0 hover:bg-accent'
             >
               <p className='text-sm font-medium'>{notification.message}</p>
               <p className='mt-1 text-xs text-muted-foreground'>
