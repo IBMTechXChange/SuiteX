@@ -33,7 +33,7 @@ export default function AppsWidget() {
         <div className='grid grid-cols-3 gap-4'>
           {apps.map((app) => (
             <Link key={app.id} href={`/${app.name.toLowerCase()}`} passHref>
-              <div className='flex flex-col items-center space-y-2 cursor-pointer'>
+              <div className='flex cursor-pointer flex-col items-center space-y-2'>
                 <Image src={app.icon} alt={app.name} width={40} height={40} />
                 <p className='text-sm font-medium'>{app.name}</p>
               </div>

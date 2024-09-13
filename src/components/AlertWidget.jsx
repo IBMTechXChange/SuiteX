@@ -35,7 +35,7 @@ export default function AlertWidget() {
           <h2 className='text-lg font-semibold'>Notifications</h2>
           <Button variant='secondary' size='sm'>
             Mark all as read
-            <Check className='w-4 h-4 ml-1' />
+            <Check className='ml-1 h-4 w-4' />
           </Button>
         </div>
         <ScrollArea className='h-[300px] overflow-y-auto'>

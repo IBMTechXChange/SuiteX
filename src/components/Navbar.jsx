@@ -97,6 +97,8 @@ export default function Navbar() {
             >
               Link 2
             </Link>
+            <AppsWidget />
+            <AlertWidget />
           </div>
           <div className='border-t border-gray-200 pb-3 pt-4'>
             <div className='flex justify-between px-4'>
