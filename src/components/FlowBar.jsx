@@ -5,25 +5,30 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useToast } from "@/hooks/use-toast"
+import Spinner from './Spinner';
 
 export default function FlowBar() {
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const router = useRouter();
+  const { toast } = useToast();
 
   // Function to send the API request and get the response
   const executeTask = async () => {
     if (!inputValue.trim()) {
-      console.log('No input provided.');
+      toast({
+        title: "No input provided",
+        description: "Please enter a task before submitting.",
+        variant: "destructive",
+      });
       return;
     }
 
     setLoading(true);
-    setError(null);
 
     try {
-      const response = await fetch('http://localhost:8000/generate', {
+      const response = await fetch('https://suitex-autobar.onrender.com/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -47,7 +52,11 @@ export default function FlowBar() {
       router.push('/flow');
     } catch (err) {
       console.error('Error:', err);
-      setError('An error occurred while fetching the response.');
+      toast({
+        title: "An error occurred",
+        description: "Failed to fetch response from server. Please try again.",
+        variant: "destructive",
+      });
     } finally {
       setLoading(false);
     }
@@ -76,11 +85,9 @@ export default function FlowBar() {
         onClick={executeTask}
         disabled={!inputValue.trim() || loading}
       >
-        {loading ? <span>Loading...</span> : <Play className='h-4 w-4' />}
+        {loading ? <Spinner size={20}/>: <Play className='h-4 w-4' />}
         <span className='sr-only'>Send message</span>
       </Button>
-
-      {error && <p className='text-red-500'>{error}</p>}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar';
+import { Toaster } from '@/components/ui/toaster';
 import '@/styles/globals.css';
 
 export const metadata = {
@@ -11,8 +11,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className='p-2'>
-        <Navbar />
         {children}
+        <Toaster />
       </body>
     </html>
   );
