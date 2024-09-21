@@ -1,8 +1,8 @@
 export default function Layout({ children }) {
   return (
-    <body className='p-2'>
-      hi
+    <div className='p-2'>
+      This is a navbar
       {children}
-    </body>
+    </div>
   );
 }
