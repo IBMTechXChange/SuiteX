@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useToast } from "@/hooks/use-toast"
+import { useToast } from '@/hooks/use-toast';
 import Spinner from './Spinner';
 
 export default function FlowBar() {
@@ -18,9 +18,9 @@ export default function FlowBar() {
   const executeTask = async () => {
     if (!inputValue.trim()) {
       toast({
-        title: "No input provided",
-        description: "Please enter a task before submitting.",
-        variant: "destructive",
+        title: 'No input provided',
+        description: 'Please enter a task before submitting.',
+        variant: 'destructive',
       });
       return;
     }
@@ -28,15 +28,18 @@ export default function FlowBar() {
     setLoading(true);
 
     try {
-      const response = await fetch('https://suitex-autobar.onrender.com/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          question: inputValue,
-        }),
-      });
+      const response = await fetch(
+        'https://suitex-autobar.onrender.com/generate',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            question: inputValue,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error('Failed to fetch response from server');
@@ -53,9 +56,9 @@ export default function FlowBar() {
     } catch (err) {
       console.error('Error:', err);
       toast({
-        title: "An error occurred",
-        description: "Failed to fetch response from server. Please try again.",
-        variant: "destructive",
+        title: 'An error occurred',
+        description: 'Failed to fetch response from server. Please try again.',
+        variant: 'destructive',
       });
     } finally {
       setLoading(false);
@@ -85,7 +88,7 @@ export default function FlowBar() {
         onClick={executeTask}
         disabled={!inputValue.trim() || loading}
       >
-        {loading ? <Spinner size={20}/>: <Play className='h-4 w-4' />}
+        {loading ? <Spinner size={20} /> : <Play className='h-4 w-4' />}
         <span className='sr-only'>Send message</span>
       </Button>
     </div>
