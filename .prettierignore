@@ -1,0 +1,27 @@
+# Ignore artifacts:
+.build/
+.next/
+dist/
+out/
+
+# Ignore config files:
+.eslintrc.json
+.prettierrc.json
+package.json
+package-lock.json
+tailwind.config.js
+jsconfig.json
+
+# Ignore logs:
+logs
+*.log
+
+# Ignore coverage reports:
+coverage/
+
+# Ignore all node_modules
+node_modules/
+
+# Ignore public assets
+/public/
+

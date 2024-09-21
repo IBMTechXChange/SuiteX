@@ -80,7 +80,7 @@ export default function FlowBar() {
         <span className='sr-only'>Send message</span>
       </Button>
 
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p className='text-red-500'>{error}</p>}
     </div>
   );
 }

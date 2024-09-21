@@ -15,9 +15,9 @@ function FlowPage() {
   }, []);
 
   return (
-    <div className="p-4 max-w-2xl mx-auto">
-       {apiResponse ? (
-        <pre className="bg-gray-100 p-4 rounded-md">
+    <div className='mx-auto max-w-2xl p-4'>
+      {apiResponse ? (
+        <pre className='rounded-md bg-gray-100 p-4'>
           {JSON.stringify(apiResponse, null, 2)}
         </pre>
       ) : (
