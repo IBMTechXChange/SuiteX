@@ -10,15 +10,17 @@ import Modal from '@/components/FlowBlob';
 import { useFlowContext } from '@/hooks/FlowContext';
 
 const FlowPage = () => {
-  const { parsedData, activeCards, loading, handleAction, fetchLink } = useFlowData();
-  const { mailLoading, mailSent, handleMailEdit, handleMailSend } = useMailActions();
+  const { parsedData, activeCards, loading, handleAction, fetchLink } =
+    useFlowData();
+  const { mailLoading, mailSent, handleMailEdit, handleMailSend } =
+    useMailActions();
   const { addFlow } = useFlowContext();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [flowName, setFlowName] = useState('');
 
   const handleSaveFlow = () => {
-    addFlow(flowName); 
+    addFlow(flowName);
     setIsModalOpen(false);
     setFlowName('');
   };
@@ -66,21 +68,25 @@ const FlowPage = () => {
   return (
     <div className='relative mx-auto flex min-h-[calc(100vh-224px)] max-w-3xl flex-col items-center justify-center overflow-hidden'>
       {renderContent()}
-      <Button onClick={() => setIsModalOpen(true)} className="mt-4">Save Flow</Button>
+      <Button onClick={() => setIsModalOpen(true)} className='mt-4'>
+        Save Flow
+      </Button>
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>
-          <div className="p-4">
-            <h2 className="text-lg font-bold">Name Your Flow</h2>
-            <input 
-              type="text" 
-              value={flowName} 
-              onChange={(e) => setFlowName(e.target.value)} 
-              className="mt-2 w-full p-2 border border-gray-300 rounded" 
-              placeholder="Enter flow name"
+          <div className='p-4'>
+            <h2 className='text-lg font-bold'>Name Your Flow</h2>
+            <input
+              type='text'
+              value={flowName}
+              onChange={(e) => setFlowName(e.target.value)}
+              className='mt-2 w-full rounded border border-gray-300 p-2'
+              placeholder='Enter flow name'
             />
-            <div className="mt-4">
+            <div className='mt-4'>
               <Button onClick={handleSaveFlow}>Save</Button>
-              <Button onClick={() => setIsModalOpen(false)} className="ml-2">Cancel</Button>
+              <Button onClick={() => setIsModalOpen(false)} className='ml-2'>
+                Cancel
+              </Button>
             </div>
           </div>
         </Modal>
