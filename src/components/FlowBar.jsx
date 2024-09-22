@@ -28,15 +28,18 @@ export default function FlowBar() {
     setLoading(true);
 
     try {
-      const response = await fetch('https://suitex-autobar.onrender.com/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          question: inputValue,
-        }),
-      });
+      const response = await fetch(
+        'https://suitex-autobar.onrender.com/generate',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            question: inputValue,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error('Failed to fetch response from server');
