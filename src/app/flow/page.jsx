@@ -19,8 +19,8 @@ const FlowPage = () => {
   const [flowName, setFlowName] = useState('');
 
   const handleSaveFlow = () => {
-    console.log("Save")
-    window.location.href = "/";
+    console.log('Save');
+    window.location.href = '/';
   };
 
   const renderContent = () => {
