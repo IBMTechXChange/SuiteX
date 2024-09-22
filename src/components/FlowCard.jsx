@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, X, Copy, ExternalLink, Loader2, Calendar, Link } from 'lucide-react';
+import { Check, X, Copy, ExternalLink, Loader2, Calendar, Link, FileText } from 'lucide-react';
 import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useToast } from "@/hooks/use-toast";
@@ -33,6 +33,8 @@ const FlowCard = ({ cardKey, value, activeCards, loading, onAction, fetchLink })
         return <Link className="h-6 w-6 text-blue-600" />;
       case 'calX':
         return <Calendar className="h-6 w-6 text-yellow-600" />;
+      case 'docX':
+        return <FileText className="h-6 w-6 text-green-600" />;
       default:
         return null;
     }
@@ -83,7 +85,7 @@ const FlowCard = ({ cardKey, value, activeCards, loading, onAction, fetchLink })
           <Button onClick={() => copyToClipboard(value)} variant="outline" size="sm">
             <Copy className="mr-2 h-4 w-4" /> Copy Link
           </Button>
-          {cardKey === 'connectX' && (
+          {(cardKey === 'connectX' || cardKey === 'docX') && (
             <Button onClick={() => window.open(value, '_blank')} variant="outline" size="sm">
               <ExternalLink className="mr-2 h-4 w-4" /> Open Link
             </Button>
