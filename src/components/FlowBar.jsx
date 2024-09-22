@@ -4,38 +4,63 @@ import { Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation'; // Import the useRouter hook
+import { useRouter } from 'next/navigation';
 
 export default function FlowBar() {
   const [inputValue, setInputValue] = useState('');
-  const router = useRouter(); // Initialize the router
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const router = useRouter();
 
-  // Dummy function to be executed
-  const executeTask = () => {
-    if (inputValue.trim()) {
-      console.log('Task executed:', inputValue);
-
-      // Redirect to the /flow page after task execution
-      router.push('/flow');
-
-      // You can add more logic here based on your requirements
-    } else {
+  // Function to send the API request and get the response
+  const executeTask = async () => {
+    if (!inputValue.trim()) {
       console.log('No input provided.');
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('http://localhost:8000/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          question: inputValue,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch response from server');
+      }
+
+      const data = await response.json();
+      console.log('API Response:', data.response);
+
+      // Store the API response in localStorage
+      localStorage.setItem('apiResponse', data.response);
+
+      // Redirect to the /flow page
+      router.push('/flow');
+    } catch (err) {
+      console.error('Error:', err);
+      setError('An error occurred while fetching the response.');
+    } finally {
+      setLoading(false);
     }
   };
 
-  // Function to handle input change and adjust textarea height
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
-
-    // Automatically adjust the height of the textarea
-    e.target.style.height = 'auto'; // Reset height
-    e.target.style.height = `${e.target.scrollHeight}px`; // Set height based on scrollHeight
+    e.target.style.height = 'auto';
+    e.target.style.height = `${e.target.scrollHeight}px`;
   };
 
   return (
     <div className='relative flex w-full max-w-2xl items-center p-4'>
-      {/* Textarea that grows with input */}
       <Textarea
         rows={1}
         value={inputValue}
@@ -45,16 +70,17 @@ export default function FlowBar() {
         style={{ overflowY: inputValue ? 'auto' : 'hidden' }}
       />
 
-      {/* Play Button inside Textarea */}
       <Button
         size='icon'
         className={`absolute bottom-4 right-4 h-10 w-10 p-2 ${inputValue.trim() ? 'bg-primary text-white hover:bg-primary/90' : 'bg-primary/80 text-white/80'}`}
         onClick={executeTask}
-        disabled={!inputValue.trim()} // Disable button when no input
+        disabled={!inputValue.trim() || loading}
       >
-        <Play className='h-4 w-4' />
+        {loading ? <span>Loading...</span> : <Play className='h-4 w-4' />}
         <span className='sr-only'>Send message</span>
       </Button>
+
+      {error && <p className='text-red-500'>{error}</p>}
     </div>
   );
 }
