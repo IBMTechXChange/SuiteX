@@ -28,18 +28,15 @@ export default function FlowBar() {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        'https://suitex-autobar.onrender.com/generate',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            question: inputValue,
-          }),
-        }
-      );
+      const response = await fetch('http://localhost:8000/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          question: inputValue,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error('Failed to fetch response from server');
@@ -47,6 +44,15 @@ export default function FlowBar() {
 
       const data = await response.json();
       console.log('API Response:', data.response);
+
+      if (data.response === -1) {
+        toast({
+          title: 'Irrelevant question',
+          description: 'The question is irrelevant. Please try again with a valid question.',
+          variant: 'destructive',
+        });
+        return; 
+      }
 
       // Store the API response in localStorage
       localStorage.setItem('apiResponse', data.response);

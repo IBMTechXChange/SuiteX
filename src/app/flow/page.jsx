@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useEffect, useState } from 'react';
 import { Mail, Check, X } from 'lucide-react';
 
@@ -29,21 +29,39 @@ const FlowPage = () => {
     }
   }, []);
 
-  const fetchDummyData = (key) => {
-    // Simulating an API call
-    setTimeout(() => {
-      setParsedData(prevData => ({
-        ...prevData,
-        [key]: `Fetched data for ${key}`
-      }));
-    }, 1000);
+  const fetchLink = async (key) => {
+    const requestData = {
+      [key]: 1
+    };
+
+    try {
+      const response = await fetch('https://suitex-linkgen-api.onrender.com/generate_link', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setParsedData((prevData) => ({
+          ...prevData,
+          [key]: result[`${key}_link`], 
+        }));
+      } else {
+        console.error('Error fetching link:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error fetching link:', error);
+    }
   };
 
   const handleAction = (key, action) => {
     if (action === 'tick') {
-      fetchDummyData(key);
+      fetchLink(key); 
     } else {
-      setActiveCards(prev => ({ ...prev, [key]: false }));
+      setActiveCards((prev) => ({ ...prev, [key]: false }));
     }
   };
 
@@ -103,8 +121,12 @@ const FlowPage = () => {
 
     return (
       <div className="space-y-4">
-        {Object.entries(parsedData).map(([key, value]) => 
-          key === 'mailX' ? renderMailX(value) : renderCard(key, value)
+        {Object.entries(parsedData).map(([key, value]) =>
+          key === 'mailX' ? (
+            <div key={key}>{renderMailX(value)}</div>
+          ) : (
+            <div key={key}>{renderCard(key, value)}</div>
+          )
         )}
       </div>
     );
