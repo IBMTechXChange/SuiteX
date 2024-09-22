@@ -1,12 +1,10 @@
 import FlowBar from '@/components/FlowBar';
 import { cn } from '@/lib/utils';
 import GridPattern from '@/components/ui/grid-pattern';
-import Navbar from '@/components/Navbar';
 
 const Home = () => {
   return (
     <>
-      <Navbar />
       <div className='relative flex min-h-[calc(100vh-80px)] flex-col items-center justify-center overflow-hidden text-center'>
         <GridPattern
           width={60} // Increase the size for better visibility

@@ -28,7 +28,7 @@ export default function FlowBar() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/generate', {
+      const response = await fetch('https://suitex-autobar.onrender.com/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
