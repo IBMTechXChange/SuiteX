@@ -18,7 +18,7 @@ const FlowPage = () => {
     if (parsedData.error)
       return (
         <Alert variant='destructive'>
-          <AlertDescription>{parsedData.error}: There is a problem with your command. Please make sure your your command is relevant.</AlertDescription>
+          <AlertDescription>{parsedData.error}: There is a problem with your command. Please make sure your command is relevant.</AlertDescription>
         </Alert>
       );
 
