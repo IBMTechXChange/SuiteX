@@ -48,10 +48,11 @@ export default function FlowBar() {
       if (data.response === -1) {
         toast({
           title: 'Irrelevant question',
-          description: 'The question is irrelevant. Please try again with a valid question.',
+          description:
+            'The question is irrelevant. Please try again with a valid question.',
           variant: 'destructive',
         });
-        return; 
+        return;
       }
 
       // Store the API response in localStorage
