@@ -11,9 +11,9 @@ export default function Layout({ children }) {
   };
 
   return (
-    <div className='px-4 py-12'>
-      <Button onClick={goBack} variant="ghost" size="sm" className="flex items-center mb-4">
-        <ArrowLeft className="mr-2 h-4 w-4" />
+    <div className='px-4 py-12 '>
+      <Button onClick={goBack} variant="ghost" size="sm" className="flex items-center mb-4 rounded-3xl bg-white/80 shadow-lg backdrop-blur-m">
+        <ArrowLeft className="mr-2 h-4 w-4 " />
         Go Back
       </Button>
       {children}

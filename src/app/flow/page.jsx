@@ -1,17 +1,27 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { useFlowData } from '@/hooks/useFlowData';
 import { useMailActions } from '@/hooks/useMailActions';
 import FlowCard from '@/components/FlowCard';
 import MailCard from '@/components/MailCard';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-
+import { Button } from '@/components/ui/button';
+import Modal from '@/components/FlowBlob';
+import { useFlowContext } from '@/hooks/FlowContext';
 
 const FlowPage = () => {
-  const { parsedData, activeCards, loading, handleAction, fetchLink } =
-    useFlowData();
-  const { mailLoading, mailSent, handleMailEdit, handleMailSend } =
-    useMailActions();
+  const { parsedData, activeCards, loading, handleAction, fetchLink } = useFlowData();
+  const { mailLoading, mailSent, handleMailEdit, handleMailSend } = useMailActions();
+  const { addFlow } = useFlowContext();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [flowName, setFlowName] = useState('');
+
+  const handleSaveFlow = () => {
+    addFlow(flowName); 
+    setIsModalOpen(false);
+    setFlowName('');
+  };
 
   const renderContent = () => {
     if (!parsedData) return <p>Loading...</p>;
@@ -53,6 +63,25 @@ const FlowPage = () => {
   return (
     <div className='relative mx-auto flex min-h-[calc(100vh-224px)] max-w-3xl flex-col items-center justify-center overflow-hidden'>
       {renderContent()}
+      <Button onClick={() => setIsModalOpen(true)} className="mt-4">Save Flow</Button>
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)}>
+          <div className="p-4">
+            <h2 className="text-lg font-bold">Name Your Flow</h2>
+            <input 
+              type="text" 
+              value={flowName} 
+              onChange={(e) => setFlowName(e.target.value)} 
+              className="mt-2 w-full p-2 border border-gray-300 rounded" 
+              placeholder="Enter flow name"
+            />
+            <div className="mt-4">
+              <Button onClick={handleSaveFlow}>Save</Button>
+              <Button onClick={() => setIsModalOpen(false)} className="ml-2">Cancel</Button>
+            </div>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };
