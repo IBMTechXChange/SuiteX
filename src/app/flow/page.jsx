@@ -6,7 +6,6 @@ import FlowCard from '@/components/FlowCard';
 import MailCard from '@/components/MailCard';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
-
 const FlowPage = () => {
   const { parsedData, activeCards, loading, handleAction, fetchLink } =
     useFlowData();
@@ -18,7 +17,10 @@ const FlowPage = () => {
     if (parsedData.error)
       return (
         <Alert variant='destructive'>
-          <AlertDescription>{parsedData.error}: There is a problem with your command. Please make sure your command is relevant.</AlertDescription>
+          <AlertDescription>
+            {parsedData.error}: There is a problem with your command. Please
+            make sure your command is relevant.
+          </AlertDescription>
         </Alert>
       );
 
