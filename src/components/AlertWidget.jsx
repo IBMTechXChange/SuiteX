@@ -1,4 +1,4 @@
-import { Bell, Check } from 'lucide-react';
+import { Bookmark, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
@@ -26,18 +26,14 @@ export default function AlertWidget() {
     <Popover>
       <PopoverTrigger asChild>
         <Button variant='outline' className='relative w-full gap-2 p-2'>
-          <Bell className='h-5 w-5' />
+          <Bookmark className='h-5 w-5' />
           <span className='absolute right-0 top-0 h-2 w-2 rounded-full bg-red-500' />
-          <span className='block md:hidden'> Notifications </span>
+          <span className=''> Flows </span>
         </Button>
       </PopoverTrigger>
       <PopoverContent className='w-80'>
         <div className='mb-4 flex items-center justify-between'>
-          <h2 className='text-lg font-semibold'>Notifications</h2>
-          <Button variant='secondary' size='sm'>
-            Mark all as read
-            <Check className='ml-1 h-4 w-4' />
-          </Button>
+          <h2 className='text-lg font-semibold'>Saved Flows</h2>
         </div>
         <ScrollArea className='h-[300px] overflow-y-auto'>
           {notifications.map((notification) => (

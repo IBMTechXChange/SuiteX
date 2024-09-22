@@ -1,13 +1,13 @@
-'use client'
-import { useRouter } from 'next/navigation';  // Import from next/navigation
+'use client';
+import { useRouter } from 'next/navigation'; // Import from next/navigation
 import { ArrowLeft } from 'lucide-react';
-import { Button } from '@/components/ui/button';  // Assuming you have a Button component
+import { Button } from '@/components/ui/button'; // Assuming you have a Button component
 
 export default function Layout({ children }) {
   const router = useRouter();
 
   const goBack = () => {
-    router.back();  // Navigate to the previous page
+    router.back(); // Navigate to the previous page
   };
 
   return (

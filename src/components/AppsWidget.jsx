@@ -11,11 +11,11 @@ import Link from 'next/link';
 
 export default function AppsWidget() {
   const apps = [
-    { id: 1, name: 'ConnectX', icon: '/logo.png' },
-    { id: 2, name: 'MailX', icon: '/logo.png' },
-    { id: 3, name: 'DocX', icon: '/logo.png' },
-    { id: 4, name: 'CalendarX', icon: '/logo.png' },
-    { id: 5, name: 'StoreX', icon: '/logo.png' },
+    { id: 1, name: 'ConnectX', icon: '/applogos/connectx.svg' },
+    { id: 2, name: 'MailX', icon: '/applogos/mailx.svg' },
+    { id: 3, name: 'DocX', icon: '/applogos/docx.svg' },
+    { id: 4, name: 'CalendarX', icon: '/applogos/calx.svg' },
+    { id: 5, name: 'StoreX', icon: '/applogos/storex.svg' },
     { id: 6, name: 'SuiteX', icon: '/logo.png' },
   ];
 
