@@ -12,7 +12,7 @@ const MailCard = ({ mailData, mailLoading, mailSent, onEdit, onSend }) => {
   return (
     <Card className='bg-purple-100'>
       <CardHeader>
-        <h3 className='flex items-center text-xl font-bold text-purple-800'>
+        <h3 className='flex items-center text-xl font-bold '>
           <Mail className='mr-2' /> Mail X
         </h3>
       </CardHeader>

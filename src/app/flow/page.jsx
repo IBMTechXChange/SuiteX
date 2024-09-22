@@ -6,6 +6,7 @@ import FlowCard from '@/components/FlowCard';
 import MailCard from '@/components/MailCard';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
+
 const FlowPage = () => {
   const { parsedData, activeCards, loading, handleAction, fetchLink } =
     useFlowData();
@@ -17,7 +18,7 @@ const FlowPage = () => {
     if (parsedData.error)
       return (
         <Alert variant='destructive'>
-          <AlertDescription>{parsedData.error}</AlertDescription>
+          <AlertDescription>{parsedData.error}: There is a problem with your command. Please make sure your your command is relevant.</AlertDescription>
         </Alert>
       );
 
@@ -50,7 +51,7 @@ const FlowPage = () => {
   };
 
   return (
-    <div className='relative mx-auto flex min-h-[calc(100vh-80px)] max-w-3xl flex-col items-center justify-center overflow-hidden py-6'>
+    <div className='relative mx-auto flex min-h-[calc(100vh-224px)] max-w-3xl flex-col items-center justify-center overflow-hidden'>
       {renderContent()}
     </div>
   );
