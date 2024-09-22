@@ -7,6 +7,7 @@ import MailCard from '@/components/MailCard';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import Modal from '@/components/FlowBlob';
+import { toast } from '@/hooks/use-toast';
 
 const FlowPage = () => {
   const { parsedData, activeCards, loading, handleAction, fetchLink } =
@@ -18,9 +19,8 @@ const FlowPage = () => {
   const [flowName, setFlowName] = useState('');
 
   const handleSaveFlow = () => {
-    addFlow(flowName);
-    setIsModalOpen(false);
-    setFlowName('');
+    console.log("Save")
+    window.location.href = "/";
   };
 
   const renderContent = () => {

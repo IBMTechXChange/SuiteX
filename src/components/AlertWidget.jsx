@@ -9,18 +9,15 @@ import {
 
 export default function AlertWidget() {
   const notifications = [
-    { id: 1, message: 'New message from John', time: '2 minutes ago' },
-    { id: 2, message: 'You have a new follower', time: '1 hour ago' },
-    { id: 3, message: 'Your order has been shipped', time: '3 hours ago' },
-    { id: 4, message: 'Payment received', time: '5 hours ago' },
-    { id: 5, message: 'New comment on your post', time: '1 day ago' },
-    { id: 6, message: 'Reminder: Team meeting', time: '1 day ago' },
-    {
-      id: 7,
-      message: 'Your subscription is expiring soon',
-      time: '2 days ago',
-    },
+    { id: 1, message: 'New file uploaded by John in StoreX', time: '2 minutes ago' },
+    { id: 2, message: 'You have a new task assigned in CalX', time: '1 hour ago' },
+    { id: 3, message: 'Document approved in DocX', time: '3 hours ago' },
+    { id: 4, message: 'Meeting scheduled via ConnectX', time: '5 hours ago' },
+    { id: 5, message: 'New comment on your document in DocX', time: '1 day ago' },
+    { id: 6, message: 'Reminder: Upcoming team meeting in ConnectX', time: '1 day ago' },
+    { id: 7, message: 'Your StoreX storage is nearing capacity', time: '2 days ago' },
   ];
+  
 
   return (
     <Popover>
