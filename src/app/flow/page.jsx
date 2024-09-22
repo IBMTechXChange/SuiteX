@@ -7,14 +7,12 @@ import MailCard from '@/components/MailCard';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import Modal from '@/components/FlowBlob';
-import { useFlowContext } from '@/hooks/FlowContext';
 
 const FlowPage = () => {
   const { parsedData, activeCards, loading, handleAction, fetchLink } =
     useFlowData();
   const { mailLoading, mailSent, handleMailEdit, handleMailSend } =
     useMailActions();
-  const { addFlow } = useFlowContext();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [flowName, setFlowName] = useState('');
