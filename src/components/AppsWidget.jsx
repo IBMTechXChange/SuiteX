@@ -11,12 +11,12 @@ import Link from 'next/link';
 
 export default function AppsWidget() {
   const apps = [
-    { id: 1, name: 'ConnectX', icon: '/applogos/connectx.svg' },
-    { id: 2, name: 'MailX', icon: '/applogos/mailx.svg' },
-    { id: 3, name: 'DocX', icon: '/applogos/docx.svg' },
-    { id: 4, name: 'CalendarX', icon: '/applogos/calx.svg' },
-    { id: 5, name: 'StoreX', icon: '/applogos/storex.svg' },
-    { id: 6, name: 'SuiteX', icon: '/logo.png' },
+    { id: 1, name: 'ConnectX', icon: '/applogos/connectx.svg', url: 'https://connectx-1-1981.onrender.com/' },
+    { id: 2, name: 'MailX', icon: '/applogos/mailx.svg', url: 'https://suitex.onrender.com/' },
+    { id: 3, name: 'DocX', icon: '/applogos/docx.svg', url: 'https://docx-phi.vercel.app/' },
+    { id: 4, name: 'CalendarX', icon: '/applogos/calx.svg', url: 'https://calx.onrender.com/' },
+    { id: 5, name: 'StoreX', icon: '/applogos/storex.svg', url: 'https://storex-vu1z.onrender.com/' },
+    { id: 6, name: 'SuiteX', icon: '/logo.png', url: 'https://suitex.onrender.com/' },
   ];
 
   return (
@@ -33,7 +33,7 @@ export default function AppsWidget() {
         </div>
         <div className='grid grid-cols-3 gap-4'>
           {apps.map((app) => (
-            <Link key={app.id} href={`/${app.name.toLowerCase()}`} passHref>
+            <Link key={app.id} href={app.url} passHref>
               <div className='flex cursor-pointer flex-col items-center space-y-2'>
                 <Image src={app.icon} alt={app.name} width={40} height={40} />
                 <p className='text-sm font-medium'>{app.name}</p>
