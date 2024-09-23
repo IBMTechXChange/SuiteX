@@ -91,7 +91,7 @@ const Home = () => {
                       : 'opacity-0'
                   }`}
                 >
-                  "{prompt}"
+                  {prompt}
                 </p>
               ))}
             </div>
