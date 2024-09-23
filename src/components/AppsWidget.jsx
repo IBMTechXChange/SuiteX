@@ -11,12 +11,42 @@ import Link from 'next/link';
 
 export default function AppsWidget() {
   const apps = [
-    { id: 1, name: 'ConnectX', icon: '/applogos/connectx.svg', url: 'https://connectx-1-1981.onrender.com/' },
-    { id: 2, name: 'MailX', icon: '/applogos/mailx.svg', url: 'https://suitex.onrender.com/' },
-    { id: 3, name: 'DocX', icon: '/applogos/docx.svg', url: 'https://docx-phi.vercel.app/' },
-    { id: 4, name: 'CalendarX', icon: '/applogos/calx.svg', url: 'https://calx.onrender.com/' },
-    { id: 5, name: 'StoreX', icon: '/applogos/storex.svg', url: 'https://storex-vu1z.onrender.com/' },
-    { id: 6, name: 'SuiteX', icon: '/logo.png', url: 'https://suitex.onrender.com/' },
+    {
+      id: 1,
+      name: 'ConnectX',
+      icon: '/applogos/connectx.svg',
+      url: 'https://connectx-1-1981.onrender.com/',
+    },
+    {
+      id: 2,
+      name: 'MailX',
+      icon: '/applogos/mailx.svg',
+      url: 'https://suitex.onrender.com/',
+    },
+    {
+      id: 3,
+      name: 'DocX',
+      icon: '/applogos/docx.svg',
+      url: 'https://docx-phi.vercel.app/',
+    },
+    {
+      id: 4,
+      name: 'CalendarX',
+      icon: '/applogos/calx.svg',
+      url: 'https://calx.onrender.com/',
+    },
+    {
+      id: 5,
+      name: 'StoreX',
+      icon: '/applogos/storex.svg',
+      url: 'https://storex-vu1z.onrender.com/',
+    },
+    {
+      id: 6,
+      name: 'SuiteX',
+      icon: '/logo.png',
+      url: 'https://suitex.onrender.com/',
+    },
   ];
 
   return (

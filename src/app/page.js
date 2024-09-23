@@ -18,7 +18,7 @@ const Home = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPrompt((prev) => (prev + 1) % examplePrompts.length);
-    }, 4000); 
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
@@ -39,7 +39,7 @@ const Home = () => {
             <h1 className='relative mb-2 text-3xl font-bold text-gray-900 sm:text-5xl'>
               Automate <span className='italic'>your</span> workflow
               <div className='absolute -left-8 -top-24 hidden -rotate-12 rounded-xl bg-white py-0.5 pl-2 sm:block'>
-                <img 
+                <img
                   src={'/applogos/connectx.svg'}
                   alt='ConnectX'
                   className='h-12 w-12'
@@ -85,8 +85,10 @@ const Home = () => {
               {examplePrompts.map((prompt, index) => (
                 <p
                   key={index}
-                  className={`absolute left-0 right-0 text-lg font-medium text-gray-700 italic transition-opacity ${
-                    index === currentPrompt ? 'animate-slideUpFade' : 'opacity-0'
+                  className={`absolute left-0 right-0 text-lg font-medium italic text-gray-700 transition-opacity ${
+                    index === currentPrompt
+                      ? 'animate-slideUpFade'
+                      : 'opacity-0'
                   }`}
                 >
                   "{prompt}"
